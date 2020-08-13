@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.palladiosimulator.p2mirror.cbiaggregator</groupId>
+	<artifactId>parent</artifactId>	
+	<version>4.3.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<repo>${project.build.directory}/repository</repo>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-p2-extras-plugin</artifactId>
+				<version>1.7.0</version>
+				<executions>
+					<execution>
+						<id>p2-mirror-4.8</id>
+						<phase>package</phase>
+						<goals>
+							<goal>mirror</goal>
+						</goals>
+						<configuration>
+							<source>
+								<repository>
+									<url>https://download.eclipse.org/cbi/updates/aggregator/headless/4.8/</url>
+									<layout>p2</layout>
+								</repository>
+							</source>
+							<destination>${repo}/4.8</destination>
+						</configuration>
+					</execution>
+					<execution>
+						<id>p2-mirror-4.13</id>
+						<phase>package</phase>
+						<goals>
+							<goal>mirror</goal>
+						</goals>
+						<configuration>
+							<source>
+								<repository>
+									<url>https://download.eclipse.org/cbi/updates/aggregator/headless/4.13/</url>
+									<layout>p2</layout>
+								</repository>
+							</source>
+							<destination>${repo}/4.13</destination>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
